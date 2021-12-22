@@ -1,0 +1,14 @@
+<div class="row vh-100">
+    <form [formGroup]="formulario" (ngSubmit)="start(formulario)" action="" class="card shadwon col-4 mx-auto my-auto p-3 text-center row">
+        <legend class="col-12">
+            <h4>Pon a prueba tus conocimientos</h4>
+        </legend>
+        <div class="form-group col-12">
+          <input type="text" formControlName="alias"
+            class="form-control my-3" name="alias" id="alias" aria-describedby="helpId" placeholder="Ingresa tu alias">
+        </div>
+        <div class="col-12 row d-flex justify-content-center">
+            <button type="submit" name="" id="" class="btn btn-success my-3 col-8">QUE COMIENCE EL JUEGO</button>
+        </div>
+    </form>
+</div>
