@@ -1,6 +1,15 @@
-# JuegoSoftka
+# JuegoSofka
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Desarrollo para prueba tecnica
+
+El proyecto consta de un modulo que contiene tres componentes, inicio, juego y fin. El componente de inicio se encarga de 
+registrar al jugador, el componente de juego es el que contiene la logica y lanza las preguntas y respuestas aleatorias que permiten
+pasar de nivel y el componente de fin es el que muestra el resultado de la partida y el historial del jugador.
+
+Despues de clonar o descargar el repositorio, necesitara ejecutar el comando `npm install` lo cual instalara todas las dependencias
+necesarias para correr el proyecto. 
+
+Despues de instalar las dependencias necesitara levantar el Development server como se explica a continuación:
 
 ## Development server
 
