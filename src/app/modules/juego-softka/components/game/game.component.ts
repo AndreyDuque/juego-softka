@@ -18,11 +18,11 @@ export class GameComponent implements OnInit {
   resSeleccionada: string = '';
   idCheckSelected: string = '';
   nivelCategoria = [
-    { id: 0, p: ['¿Que es HTML?', 'Lenguaje de marcado', 'Lenguaje de señas', 'Lenguaje escrito', 'Lenguaje del amor'], categoria: 'html', puntaje: 100 },
-    { id: 1, p: ['¿Son etiquetas de HTML?', '<nav></nav>', '<amor/>', '<¡/>', '?>'], categoria: 'html', puntaje: 100 },
-    { id: 2, p: ['¿Que etiqueta se usa para construir formularios en HTML?', '<form></form>', '<for></>', '<enForma>', '<deforma>'], categoria: 'html', puntaje: 100 },
-    { id: 3, p: ['¿Es una etiqueta de titulo en HTML?', '<h1></h1>', 'title', '<p></p>', '<titulo>'], categoria: 'html', puntaje: 100 },
-    { id: 4, p: ['Esta etiqueta se usa para obtener un divisor horizontal:', '<hr>', '<br></br>', '<divisor>', 'divHorizontal'], categoria: 'html', puntaje: 100 },
+    { id: 0, p: ['¿Que es HTML?', 'respuestaCorrecta', 'Lenguaje de señas', 'Lenguaje escrito', 'Lenguaje del amor'], categoria: 'html', puntaje: 100 },
+    { id: 1, p: ['¿Son etiquetas de HTML?', 'respuestaCorrecta', '<amor/>', '<¡/>', '?>'], categoria: 'html', puntaje: 100 },
+    { id: 2, p: ['¿Que etiqueta se usa para construir formularios en HTML?', 'respuestaCorrecta', '<for></>', '<enForma>', '<deforma>'], categoria: 'html', puntaje: 100 },
+    { id: 3, p: ['¿Es una etiqueta de titulo en HTML?', 'respuestaCorrecta', 'title', '<p></p>', '<titulo>'], categoria: 'html', puntaje: 100 },
+    { id: 4, p: ['Esta etiqueta se usa para obtener un divisor horizontal:', 'respuestaCorrecta', '<br></br>', '<divisor>', 'divHorizontal'], categoria: 'html', puntaje: 100 },
     { id: 0, p: ['pregunta', 'respuestaCorrecta', 'respuestaFalsa', 'respuestaFalsa', 'respuestaFalsa'], categoria: 'css', puntaje: 200 },
     { id: 1, p: ['pregunta', 'respuestaCorrecta', 'respuestaFalsa', 'respuestaFalsa', 'respuestaFalsa'], categoria: 'css', puntaje: 200 },
     { id: 2, p: ['pregunta', 'respuestaCorrecta', 'respuestaFalsa', 'respuestaFalsa', 'respuestaFalsa'], categoria: 'css', puntaje: 200 },
