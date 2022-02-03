@@ -52,13 +52,13 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
 
     // Obtener arreglo de objetos con la categoria HTML
-    let catActual = this.nivelCategoria.filter(el => el.categoria === this.categorias[0]);
-    this.preguntaAleatoria(catActual);
-
+    let catInicial = this.nivelCategoria.filter(el => el.categoria === this.categorias[0]);
+    this.preguntaAleatoria(catInicial);
+    // console.log('Categoria Inicial: ', catInicial[0].categoria);
   }
 
-  // Cargar categoria HTML para generar la pregunta de manera aleatoria
-  preguntaAleatoria = (arrayPreguntas: any[]) => {
+  // Cargar la categoria para generar la pregunta de manera aleatoria
+  preguntaAleatoria = (arrayCategoria: any[]) => {
     let nPreg: number = 0;
     let condicion = true;
 
@@ -70,7 +70,7 @@ export class GameComponent implements OnInit {
     } while (condicion);
 
     // Filtrar pregunta por su id, atravez del numuero obtenido en el siclo doWhile
-    let pregunta = arrayPreguntas.filter(el => el.id === nPreg)[0];
+    let pregunta = arrayCategoria.filter(el => el.id === nPreg)[0];
     this.pregunta = pregunta.p[0];// muestra la pregunta actual
 
     // Ordenar respuestas de manera aleatoria
@@ -94,15 +94,12 @@ export class GameComponent implements OnInit {
       this.idPreguntaActual = nPreg;
     })
 
-    console.log('Orden de las respuestas: ', orderRespustas);
-    console.log('Respuestas : ', this.respuestas);
-    console.log('Pregunta actual: ', this.idPreguntaActual);
   }
 
   confirmar = (formulario: NgForm) => {
+
     let cat = this.categorias[this.nivel];
-    let catActual = this.nivelCategoria.filter(el => el.categoria === cat);
-    console.log('Categoria Actual: ', catActual);
+    let catActual = this.nivelCategoria.filter(el => el.categoria === cat);    
 
     if (this.nivel < 5) {
 
@@ -124,11 +121,9 @@ export class GameComponent implements OnInit {
         catActual = this.nivelCategoria.filter(el => el.categoria === this.categorias[this.nivel]);
         this.idCheckSelected = '';
         this.preguntaAleatoria(catActual);
+        // console.log('Categoria Actual: ', catActual[0].categoria);
 
       } else {
-        console.log(`no fue`);
-        console.log('Respuesta seleccionada: ', this.resSeleccionada);
-        console.log('Respuesta correcta: ', catActual[this.idPreguntaActual].p[1]);
         this.router.navigate(['/game/end-game'])
       }
     }

@@ -1,34 +1,25 @@
-<div class="row vh-100">
-  <form
-    #formPreguntas="ngForm"
-    (ngSubmit)="confirmar(formPreguntas)"
-    class="card border-warning shadwon col-4 mx-auto my-auto p-3 row"
-  >
-    <legend class="col-12 text-center">
-      <h2>Nivel {{nivel+1}} : {{categorias[nivel]|uppercase}}</h2>
-    </legend>
-    <div class="mb-4 text-center">
-      <h5>{{pregunta}}</h5>
-    </div>
-    <div class="form-check" *ngFor="let respuesta of respuestas; let i = index">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="respuesta"
-        [id]="'respuesta' + (i + 1)"
-        [value]="respuesta"
-        aria-label="..."
-        #formControl
-        (click)="onClickEvent($event)"
-        [checked]="idCheckSelected ==='respuesta' + (i + 1)"
-      />
-      <label class="form-check-label" [for]="'respuesta' + (i + 1)">
-        {{ respuesta }}
-      </label>
-    </div>
-    <div class="d-flex justify-content-center my-3">
-      <button class="btn btn-danger m-2">SALIR DEL JUEGO</button>
-      <button class="btn btn-warning m-2" [hidden]="btnConfirm">CONFIRMAR RESPUESTA</button>
-    </div>
-  </form>
-</div>
+<form #formPreguntas="ngForm" (ngSubmit)="confirmar(formPreguntas)"
+  class="card border-warning shadwon mx-auto my-auto p-3">
+  <legend class="text-center">
+    <h2>Nivel {{nivel+1}} : {{categorias[nivel]|uppercase}}</h2>
+  </legend>
+  
+  <div class="mb-3 text-center">
+    <h5>{{pregunta}}</h5>
+  </div>
+
+  <div class="form-check" *ngFor="let respuesta of respuestas; let i = index">
+    <input class="form-check-input" type="radio" name="respuesta" [id]="'respuesta' + (i + 1)" [value]="respuesta"
+      aria-label="..." #formControl (click)="onClickEvent($event)"
+      [checked]="idCheckSelected ==='respuesta' + (i + 1)" />
+    <label class="form-check-label" [for]="'respuesta' + (i + 1)">
+      {{ respuesta }}
+    </label>
+  </div>
+
+  <div class="d-grid gap-2 mt-4 col-10 col-lg-8 mx-auto">
+    <button class="btn btn-danger">SALIR DEL JUEGO</button>
+    <button class="btn btn-warning" [hidden]="btnConfirm">CONFIRMAR RESPUESTA</button>
+  </div>
+
+</form>
