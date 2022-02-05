@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
   respuestas: string[] = [];
   pregunta: string = '';
   nivel: number = 0;
+  puntuacion: number = 0;
   idPreguntaActual: number = 0;
   categorias: string[] = ['html', 'css', 'sql', 'javascript', 'angular']
   btnConfirm: boolean = true;
@@ -54,7 +55,7 @@ export class GameComponent implements OnInit {
     // Obtener arreglo de objetos con la categoria HTML
     let catInicial = this.nivelCategoria.filter(el => el.categoria === this.categorias[0]);
     this.preguntaAleatoria(catInicial);
-    // console.log('Categoria Inicial: ', catInicial[0].categoria);
+
   }
 
   // Cargar la categoria para generar la pregunta de manera aleatoria
@@ -99,7 +100,7 @@ export class GameComponent implements OnInit {
   confirmar = (formulario: NgForm) => {
 
     let cat = this.categorias[this.nivel];
-    let catActual = this.nivelCategoria.filter(el => el.categoria === cat);    
+    let catActual = this.nivelCategoria.filter(el => el.categoria === cat);
 
     if (this.nivel < 5) {
 
@@ -108,23 +109,40 @@ export class GameComponent implements OnInit {
         let idJugadorActual: string = localStorage.getItem('jugadorActual') || '';
         let data: any[] = JSON.parse(localStorage.getItem('registros') || '[]');
         let jugador: any = data.filter(el => el.id === idJugadorActual);
-        jugador[0].puntaje = parseInt(jugador[0].puntaje) + catActual[this.idPreguntaActual].puntaje
+        jugador[0].puntaje = parseInt(jugador[0].puntaje) + catActual[this.idPreguntaActual].puntaje;
         localStorage.setItem('registros', JSON.stringify(data));
+        let puntuacionAcumulada = catActual[this.idPreguntaActual].puntaje + this.puntuacion;
         this.resSeleccionada = '';
 
         if (this.nivel < 4) {
+
           this.nivel++;
+          
         } else {
-          this.router.navigate(['/game/end-game'])
+
+          alert('Felicidades, sabes un poquitico... (:')
+          this.router.navigate(['/game/end-game']);
+
         }
 
+        this.puntuacion = puntuacionAcumulada;
         catActual = this.nivelCategoria.filter(el => el.categoria === this.categorias[this.nivel]);
         this.idCheckSelected = '';
         this.preguntaAleatoria(catActual);
-        // console.log('Categoria Actual: ', catActual[0].categoria);
 
       } else {
-        this.router.navigate(['/game/end-game'])
+
+        if (this.idCheckSelected === '') {
+
+          alert('Selecciona una respuesta');
+
+        }
+        else {
+
+          alert('Respuesta incorrecta, has perdido :(')
+          this.router.navigate(['/game/end-game'])
+
+        }
       }
     }
   }

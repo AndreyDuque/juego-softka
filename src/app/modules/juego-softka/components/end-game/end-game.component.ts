@@ -14,10 +14,18 @@ export class EndGameComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     this.idJugadorActual = localStorage.getItem('jugadorActual') || '';
-        let data: any[] = JSON.parse(localStorage.getItem('registros') || '[]');
-        this.jugador = data.filter(el => el.id === this.idJugadorActual);
-        this.historial = data.filter(el => el.alias === this.jugador[0].alias);
+    let data: any[] = JSON.parse(localStorage.getItem('registros') || '[]');
+    this.jugador = data.filter(el => el.id === this.idJugadorActual);
+    let historialFiltrado = data.filter(el => el.alias === this.jugador[0].alias);
+    
+    for (let i = historialFiltrado.length-5; i < historialFiltrado.length; i++) {
+      
+      this.historial.push(historialFiltrado[i]);
+      
+    }
+    
   }
 
 }
