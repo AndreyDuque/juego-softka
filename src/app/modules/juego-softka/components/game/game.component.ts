@@ -111,7 +111,6 @@ export class GameComponent implements OnInit {
         let jugador: any = data.filter(el => el.id === idJugadorActual);
         jugador[0].puntaje = parseInt(jugador[0].puntaje) + catActual[this.idPreguntaActual].puntaje;
         localStorage.setItem('registros', JSON.stringify(data));
-        let puntuacionAcumulada = catActual[this.idPreguntaActual].puntaje + this.puntuacion;
         this.resSeleccionada = '';
 
         if (this.nivel < 4) {
@@ -120,12 +119,12 @@ export class GameComponent implements OnInit {
           
         } else {
 
-          alert('Felicidades, sabes un poquitico... (:')
+          alert('Felicidades, sabes un poquitico... (:');
           this.router.navigate(['/game/end-game']);
 
         }
 
-        this.puntuacion = puntuacionAcumulada;
+        this.puntuacion = jugador[0].puntaje;
         catActual = this.nivelCategoria.filter(el => el.categoria === this.categorias[this.nivel]);
         this.idCheckSelected = '';
         this.preguntaAleatoria(catActual);
@@ -139,8 +138,8 @@ export class GameComponent implements OnInit {
         }
         else {
 
-          alert('Respuesta incorrecta, has perdido :(')
-          this.router.navigate(['/game/end-game'])
+          alert('Respuesta incorrecta, has perdido :(');
+          this.router.navigate(['/game/end-game']);
 
         }
       }

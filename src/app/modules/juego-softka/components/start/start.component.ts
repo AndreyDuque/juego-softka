@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.scss']
 })
+
 export class StartComponent implements OnInit {
 
   jugadorActual = '';
   registro: any[] = [];
   id = '';
-
   formulario: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
@@ -34,28 +34,27 @@ export class StartComponent implements OnInit {
 
       if (localStorage.getItem("registros") === null) {
 
-        let alias: string = this.formulario.value.alias
+        let alias: string = this.formulario.value.alias;
         this.id = new Date().toISOString();
-        let reg = { id: this.id, alias: alias, puntaje: 0 }
-        this.registro.push(reg)
-        localStorage.setItem('registros', JSON.stringify(this.registro))
-        localStorage.setItem('jugadorActual', this.id)
-        this.router.navigate(['/game/actually'])
+        let reg = { id: this.id, alias: alias, puntaje: 0 };
+        this.registro.push(reg);
+        localStorage.setItem('registros', JSON.stringify(this.registro));
+        localStorage.setItem('jugadorActual', this.id);
+        this.router.navigate(['/game/actually']);
 
       } else {
 
-        this.registro = JSON.parse(localStorage.getItem('registros') || '[]')
-        let alias: string = this.formulario.value.alias
+        this.registro = JSON.parse(localStorage.getItem('registros') || '[]');
+        let alias: string = this.formulario.value.alias;
         this.id = new Date().toISOString();
-        let reg = { id: this.id, alias: alias, puntaje: 0 }
-        this.registro.push(reg)
-        localStorage.setItem('registros', JSON.stringify(this.registro))
-        localStorage.setItem('jugadorActual', this.id)
-        this.router.navigate(['/game/actually'])
+        let reg = { id: this.id, alias: alias, puntaje: 0 };
+        this.registro.push(reg);
+        localStorage.setItem('registros', JSON.stringify(this.registro));
+        localStorage.setItem('jugadorActual', this.id);
+        this.router.navigate(['/game/actually']);
         
       }
     }
-    console.log(formulario.value)
   }
 
 

@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './end-game.component.html',
   styleUrls: ['./end-game.component.scss']
 })
+
 export class EndGameComponent implements OnInit {
 
   idJugadorActual = '';
-  jugador: any[] = []
-  historial: any[] = []
+  jugador: any[] = [];
+  historial: any[] = [];
 
   constructor() { }
 
@@ -19,12 +20,21 @@ export class EndGameComponent implements OnInit {
     let data: any[] = JSON.parse(localStorage.getItem('registros') || '[]');
     this.jugador = data.filter(el => el.id === this.idJugadorActual);
     let historialFiltrado = data.filter(el => el.alias === this.jugador[0].alias);
-    
-    for (let i = historialFiltrado.length-5; i < historialFiltrado.length; i++) {
-      
-      this.historial.push(historialFiltrado[i]);
-      
+
+    if (historialFiltrado.length < 6) {
+
+      this.historial = historialFiltrado;
+
+    }else {
+
+      for (let i = historialFiltrado.length-5; i < historialFiltrado.length; i++) {
+        
+        this.historial.push(historialFiltrado[i]);
+        
+      }
+
     }
+    
     
   }
 
